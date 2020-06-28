@@ -4,7 +4,7 @@ const shortid = require("shortid");
 // To generate a unique API KEY, use shortid.generate()
 const LINE_ENDING = require("os").EOL;
 
-module.exports = function(req, res) {
+module.exports = function(req, res, next) {
   console.log("keystore");
   const key = shortid.generate();
   const str = key.concat(LINE_ENDING);
@@ -14,8 +14,9 @@ module.exports = function(req, res) {
       return console.log(err);
     }
   });
-  console.log("generated key", key);
+  console.log("generated key ", key);
   req.apiKey = key;
-  //next();
-  return;
+  console.log("generated req.apiKey ", req.apiKey);
+
+  next();
 };
