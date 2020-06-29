@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const keyStore = require("../key-store");
 
+router.get("/", keyStore);
+/*
 router.get("/", keyStore, (req, res, next) => {
   console.log("GET /auth key", req.apiKey);
   const key = req.apiKey;
@@ -18,5 +20,5 @@ router.get("/", keyStore, (req, res, next) => {
     next(err);
   }
 });
-
+*/
 module.exports = router;

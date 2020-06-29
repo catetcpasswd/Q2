@@ -2,9 +2,12 @@ const VALID_KEYS_PATH = __dirname + "/valid-keys.txt";
 const fs = require("fs");
 const readline = require("readline");
 const LINE_ENDING = require("os").EOL;
+const getKeysFromFile = require("./getKeysFromFile");
 
 module.exports = function(req, res, next) {
   const key = req.headers["x-api-key"];
+  console.log(">>>middleware Key ", key);
+
   if (!key) {
     //console.log("no key sent");
     res.status(401).send("no x-api-key in request header");
